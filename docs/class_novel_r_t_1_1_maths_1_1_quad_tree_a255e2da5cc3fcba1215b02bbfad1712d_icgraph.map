@@ -1,0 +1,7 @@
+<map id="NovelRT::Maths::QuadTree::getPoint" name="NovelRT::Maths::QuadTree::getPoint">
+<area shape="rect" id="node1" title="Returns the point instance under the specified index." alt="" coords="485,71,677,112"/>
+<area shape="rect" id="node2" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ac4786d389ede34d40df9a09f90006d3f" title="Gets a set of points that intersect with the given bounds and stores it in the given vector." alt="" coords="245,5,437,47"/>
+<area shape="rect" id="node4" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ab21a1a65bb9d744c0b2df7733655b227" title="Returns the point instance under the specified index." alt="" coords="245,71,437,112"/>
+<area shape="rect" id="node5" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#aa8254ca541b2288db7744741a8880122" title="Attempts to remove a point from the QuadTree." alt="" coords="245,136,437,177"/>
+<area shape="rect" id="node3" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ad281bfbb05dcedfb5d8c09ca41f0aa5a" title="Gets a set of points that intersect with the given bounds." alt="" coords="5,5,197,47"/>
+</map>

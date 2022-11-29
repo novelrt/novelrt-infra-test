@@ -1,0 +1,5 @@
+<map id="NovelRT::Maths::GeoBounds::pointIsWithinBounds" name="NovelRT::Maths::GeoBounds::pointIsWithinBounds">
+<area shape="rect" id="node1" title="Determines if a given GeoVector2F is within the confines of this bounding box." alt="" coords="485,5,691,47"/>
+<area shape="rect" id="node2" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ac4786d389ede34d40df9a09f90006d3f" title="Gets a set of points that intersect with the given bounds and stores it in the given vector." alt="" coords="245,5,437,47"/>
+<area shape="rect" id="node3" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ad281bfbb05dcedfb5d8c09ca41f0aa5a" title="Gets a set of points that intersect with the given bounds." alt="" coords="5,5,197,47"/>
+</map>

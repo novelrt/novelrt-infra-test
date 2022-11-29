@@ -1,0 +1,8 @@
+<map id="NovelRT::Maths::QuadTree::getTopRight" name="NovelRT::Maths::QuadTree::getTopRight">
+<area shape="rect" id="node1" title="Returns the child QuadTree node for the top right area." alt="" coords="485,71,677,112"/>
+<area shape="rect" id="node2" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ac4786d389ede34d40df9a09f90006d3f" title="Gets a set of points that intersect with the given bounds and stores it in the given vector." alt="" coords="245,5,437,47"/>
+<area shape="rect" id="node4" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#a508f27528053ca9841fb70d8c34e90b7" title="Attempts to store the given point within this QuadTree&#39;s hierarchy." alt="" coords="245,71,437,112"/>
+<area shape="rect" id="node6" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#aa8254ca541b2288db7744741a8880122" title="Attempts to remove a point from the QuadTree." alt="" coords="245,136,437,177"/>
+<area shape="rect" id="node3" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ad281bfbb05dcedfb5d8c09ca41f0aa5a" title="Gets a set of points that intersect with the given bounds." alt="" coords="5,5,197,47"/>
+<area shape="rect" id="node5" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#aacfa206cf07c8137022a83177c45976a" title="Attempts to insert a bounding box into the quadtree." alt="" coords="5,71,197,112"/>
+</map>

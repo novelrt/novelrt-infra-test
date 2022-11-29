@@ -1,0 +1,4 @@
+<map id="NovelRT::Maths::QuadTree::getIntersectingPoints" name="NovelRT::Maths::QuadTree::getIntersectingPoints">
+<area shape="rect" id="node1" title="Gets a set of points that intersect with the given bounds and stores it in the given vector." alt="" coords="245,5,437,47"/>
+<area shape="rect" id="node2" href="$class_novel_r_t_1_1_maths_1_1_quad_tree.html#ad281bfbb05dcedfb5d8c09ca41f0aa5a" title="Gets a set of points that intersect with the given bounds." alt="" coords="5,5,197,47"/>
+</map>
