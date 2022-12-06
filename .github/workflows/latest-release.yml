@@ -40,9 +40,6 @@ jobs:
           name: macOS 11 - AppleClang 13
 
     steps:
-      - name: Allow repository changes
-        run: git config --global --add safe.directory $GITHUB_WORKSPACE
-
       - name: Checkout code
         uses: actions/checkout@v3
 
