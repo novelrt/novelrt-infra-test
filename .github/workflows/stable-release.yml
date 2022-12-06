@@ -1,24 +1,13 @@
-name: Publish NovelRT Draft (Latest)
+name: Publish NovelRT (Stable)
 
 on:
   push:
-    branches:
-      - "main"
+    tags:
+      - "v*"
 
 jobs:
-  prerequisites:
-    name: Handle Prerequisites
-    runs-on: ubuntu-20.04
-    outputs:
-      date: ${{ steps.get-date.outputs.date }}
-    steps:
-      - name: Get date of build
-        id: get-date
-        run: echo "date=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
-
   build-release:
-    needs: [ prerequisites ]
-    name: ${{ matrix.name }} - ${{ matrix.configuration }}
+    name: Build NovelRT - ${{ matrix.name }} - ${{ matrix.configuration }}
     runs-on: ${{ matrix.os }}
     container: ${{ matrix.container }}
 
@@ -40,9 +29,6 @@ jobs:
           name: macOS 11 - AppleClang 13
 
     steps:
-      - name: Allow repository changes
-        run: git config --global --add safe.directory $GITHUB_WORKSPACE
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -102,17 +88,17 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: novelrt-${{ matrix.os }}-${{ matrix.configuration }}
+          name: novelrt-${{ matrix.os }}-${{ matrix.configuration }}-$GITHUB_REF_NAME
           path: build/package
           retention-days: 1
 
   merge-releases:
     name: Merge Built Artifacts
-    needs: [ build-release, prerequisites ]
+    needs: [ build-release ]
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        os: [ windows-2019, ubuntu-20.04, macos-11]
+        os: [ windows-2019, ubuntu-20.04, macos-11 ]
         include:
         - os: windows-2019
           name: Windows
@@ -122,8 +108,7 @@ jobs:
           name: macOS
 
     steps:
-      - name: Gather artifacts
-        uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           path: artifacts
 
@@ -137,46 +122,46 @@ jobs:
       - name: Upload merged artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: NovelRT-${{ matrix.os }}
+          name: NovelRT-${{ matrix.os }}-$GITHUB_REF_NAME
           path: merged
           retention-days: 1
 
       - name: Gather merged artifacts
         uses: actions/download-artifact@v3
         with:
-          name: NovelRT-${{ matrix.os }}
+          name: NovelRT-${{ matrix.os }}-$GITHUB_REF_NAME
 
       - name: Create release artifact
         run: |
           cd merged
-          zip -r "../NovelRT-${{ needs.prerequisites.outputs.date }}-${{ matrix.name }}.zip" .
+          zip -r "../NovelRT-$GITHUB_REF_NAME-${{ matrix.name }}.zip" .
           cd ..
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: novelrt-${{ needs.prerequisites.outputs.date }}
-          path: NovelRT-${{ needs.prerequisites.outputs.date }}-${{ matrix.name }}.zip
+          name: novelrt-$GITHUB_REF_NAME
+          path: NovelRT-$GITHUB_REF_NAME-${{ matrix.name }}.zip
           retention-days: 5
 
   publish-release:
-    name: Publish Draft Copy
-    needs: [ merge-releases, prerequisites ]
+    name: Publish New Edition
+    needs: [ merge-releases ]
     runs-on: ubuntu-20.04
     steps:
       - name: Gather artifacts
         uses: actions/download-artifact@v3
         with:
-          name: novelrt-${{ needs.prerequisites.outputs.date }}
+          name: novelrt-$GITHUB_REF_NAME
 
       - name: Publish NovelRT
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "NovelRT Draft - ${{ needs.prerequisites.outputs.date }}"
+          automatic_release_tag: "$GITHUB_REF_NAME"
+          prerelease: false
+          title: "NovelRT $GITHUB_REF_NAME"
           files: |
-            NovelRT-${{ needs.prerequisites.outputs.date }}-Windows.zip
-            NovelRT-${{ needs.prerequisites.outputs.date }}-Ubuntu.zip
-            NovelRT-${{ needs.prerequisites.outputs.date }}-macOS.zip
+            NovelRT-$GITHUB_REF_NAME-Windows.zip
+            NovelRT-$GITHUB_REF_NAME-Ubuntu.zip
+            NovelRT-$GITHUB_REF_NAME-macOS.zip
